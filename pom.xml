@@ -116,6 +116,5 @@
         <module>h5web-common</module>
         <module>h5web-h5Res</module>
         <module>h5web-util</module>
-        <module>h5web-static</module>
     </modules>
 </project>
