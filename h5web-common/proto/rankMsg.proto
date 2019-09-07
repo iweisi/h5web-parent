@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+option java_package = "com.xmbl.h5.web.common.proto";
+option java_outer_classname = "RankMsg";
+
+import "options.proto";
+
+/**关卡集进度变化后通知客户端 */
+message G2RTreeRankNotice {
+	option (messageId) = 2001;
+	string playerId = 1;
+	int64 treeId = 2;
+	int32 progress = 3; //关卡集进度
+	string playerName = 4;
+	int32 playerSex = 5;
+	string playerImg = 6;
+}
+
+/**关卡包进度变化后通知rank */
+message G2RNodeRankNotice {
+	option (messageId) = 2002;
+	string playerId = 1;
+//	int64 treeId = 2;
+	int64 nodeId = 3;
+	int32 progress = 4; //关卡包进度
+	string playerName = 5;
+	int32 playerSex = 6;
+	string playerImg = 7;
+}
+
+/**完成关卡后通知rank */
+message G2RStageRankNotice {
+	option (messageId) = 2003;
+	string playerId = 1;
+//	int64 treeId = 2;
+//	int64 nodeId = 3;
+	int64 stageId = 4;
+	int32 step = 7; //使用步数
+	int32 score = 8; //得分
+	int32 costSeconds = 9; //使用时间
+	int32 remBlockNum = 10; //消除的方块数
+	int32 condition_limit = 11; //-1不限制，0步数。1收集
+	int32 stage_type = 12; //0消除，1收集
+	string playerName = 13;
+	int32 playerSex = 14;
+	string playerImg = 15;
+}
+
+/**请求关卡树排行榜 */
+message TreeRankListReq{
+	option (messageId) = 2004;
+	string playerId = 1;
+	int64 treeId = 2;
+	int32 start = 3;
+	int32 end = 4;
+}
+
+message TreeRankListResp {
+	option (messageId) = 2005;
+	repeated TreeRank datas = 1;
+	string playerId = 2;
+	int32 rank = 3;
+}
+message TreeRank {
+	string playerId = 1;
+	int32 rank = 2;//排名
+	int32 progress = 3;//进度
+	string playerName = 4;
+	int32 playerSex = 5;
+	string playerImg = 6;
+}
+
+/**请求节点排行榜 */
+message NodeRankListReq {
+	option (messageId) = 2006;
+	string playerId = 1;
+	int64 nodeId = 2;
+	int32 start = 3;
+	int32 end = 4;
+}
+
+message NodeRankListResp {
+	option (messageId) = 2007;
+	repeated NodeRank datas = 1;
+	string playerId = 2;
+	int32 rank = 3;
+}
+message NodeRank {
+	string playerId = 1;
+	int32 rank = 2;//排名
+	int32 progress = 3;//进度
+	string playerName = 4;
+	int32 playerSex = 5;
+	string playerImg = 6;
+}
+
+/**请求关卡排行榜 */
+message StageRankListReq {
+	option (messageId) = 2008;
+	string playerId = 1;
+	int64 stageId = 2;
+	int32 start = 3;
+	int32 end = 4;
+}
+
+message StageRankListResp {
+	option (messageId) = 2009;
+	repeated StageRank datas = 1;
+	string playerId = 2;
+	int32 rank = 3;
+}
+message StageRank {
+	string playerId = 1;
+	int32 rank = 2;//排名
+	int32 progress = 3;//进度
+	string playerName = 4;
+	int32 playerSex = 5;
+	string playerImg = 6;
+}
+
+message G2RQeuryRankReq {
+	option (messageId) = 2010;
+	string playerId = 1;
+	int64 id = 2;
+	int32 type = 3;
+}
+
+message R2GQeuryRankResp {
+	option (messageId) = 2011;
+	int32 rank = 1;
+}
+

@@ -1,0 +1,1 @@
+protoc --proto_path=D:\code\server\block\h5web\h5web-parent\h5web-common\proto --java_out=D:\code\server\block\h5web\h5web-parent\h5web-common\src\main\java rankMsg.proto options.proto
